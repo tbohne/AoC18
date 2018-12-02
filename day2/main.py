@@ -1,16 +1,11 @@
 import sys
 
 def part_one(input):
-
     exactly_two = 0
     exactly_three = 0
 
     for boxID in input:
-
-        letter_count = []
-
-        for letter in boxID:
-            letter_count.append(boxID.count(letter))
+        letter_count = [boxID.count(letter) for letter in boxID]
 
         if 2 in letter_count:
             exactly_two += 1
@@ -25,23 +20,14 @@ def part_two(input):
 
     for boxID_one in input:
         for boxID_two in input:
-
-            num_of_diff_letters = 0
-
             if boxID_one != boxID_two:
-                for i in range(0, len(boxID_one)):
 
-                    if boxID_one[i] != boxID_two[i]:
-                        num_of_diff_letters += 1
-                        pos = boxID_one.find(boxID_one[i])
-                        common_letters = boxID_one
+                equal_letters = [l1 for l1, l2 in zip(boxID_one, boxID_two) if l1 == l2]
 
-            if num_of_diff_letters == 1:
-                return common_letters[:pos] + common_letters[pos + 1:]
+                if len(boxID_one) - len(equal_letters) == 1:
+                    return "".join(equal_letters).strip()
 
 if __name__ == '__main__':
-
     input = sys.stdin.readlines()
-
     print("sol p1: " + str(part_one(input)))
     print("sol p2: " + part_two(input))

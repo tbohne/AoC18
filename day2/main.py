@@ -7,21 +7,17 @@ def part_one(input):
 
     for boxID in input:
 
-        locked_two = False
-        locked_three = False
+        letter_count = []
 
         for letter in boxID:
+            letter_count.append(boxID.count(letter))
 
-            if boxID.count(letter) == 2 and not locked_two:
-                exactly_two += 1
-                locked_two = True
+        if 2 in letter_count:
+            exactly_two += 1
+        if 3 in letter_count:
+            exactly_three += 1
 
-            if boxID.count(letter) == 3 and not locked_three:
-                exactly_three += 1
-                locked_three = True
-
-    checksum = exactly_two * exactly_three
-    return checksum
+    return exactly_two * exactly_three
 
 def part_two(input):
 

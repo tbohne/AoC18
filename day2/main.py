@@ -16,12 +16,9 @@ def part_one(input):
 
 def part_two(input):
 
-    common_letters = ""
-
     for boxID_one in input:
         for boxID_two in input:
             if boxID_one != boxID_two:
-
                 equal_letters = [l1 for l1, l2 in zip(boxID_one, boxID_two) if l1 == l2]
 
                 if len(boxID_one) - len(equal_letters) == 1:

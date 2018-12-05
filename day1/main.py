@@ -3,7 +3,6 @@ import sys
 if __name__ == '__main__':
 
     input = sys.stdin.readlines()
-
     curr_freq = 0
     reached_twice = False
     list_of_freqs = []
@@ -13,12 +12,12 @@ if __name__ == '__main__':
         for change in input:
 
             sign = change[0]
-            change = change.replace(sign, "")
+            change = int(change.replace(sign, ""))
 
             if (sign == "+"):
-                curr_freq += int(change)
+                curr_freq += change
             else:
-                curr_freq = curr_freq - int(change)
+                curr_freq -= change
 
             if curr_freq in list_of_freqs:
                 reached_twice = True
